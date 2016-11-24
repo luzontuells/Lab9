@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Lab9</string>
+    <string name="save_int_but">Save Data on Internal File</string>
+    <string name="create_db">Create Database</string>
+    <string name="ok_but">OK</string>
+    <string name="curr_but">Current Files</string>
+    <string name="save_ext_but">Save Data on External File</string>
+    <string name="text_view">Here we go again!</string>
+    <string name="text_edit">Write something...</string>
 </resources>
