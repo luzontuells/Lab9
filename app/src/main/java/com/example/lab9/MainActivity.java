@@ -2,13 +2,17 @@ package com.example.lab9;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -76,10 +80,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } catch (IOException e) { e.printStackTrace(); }
             break;
             case R.id.save_ext_but:
+                if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED) ||
+                    Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED_READ_ONLY)){
+                    File downloadFolder =
+                            new
+                                    File(Environment.getExternalStoragePublicDirectory(
+                                    Environment.DIRECTORY_DOWNLOADS),
+                                    "newDirectory/newSubDirectory");
+                    if (!downloadFolder.mkdirs())
+                        Toast.makeText(this, "Directory not created", Toast.LENGTH_SHORT).show();
+                }
 
             break;
             case R.id.create_db:
-
+                MyDatabase database = new MyDatabase(this);
+                SQLiteDatabase sqLiteDatabase = database.getReadableDatabase();
             break;
             case R.id.curr_but:
 
